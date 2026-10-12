@@ -1,14 +1,22 @@
 {
   "name": "genesis-vesting-kit",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "private": true,
+  "description": "Integration kit for showing Genesis vesting locks, unlock schedules and circulating supply",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metaplex-foundation/genesis-vesting-kit.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Metaplex Foundation",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "create-test-token": "tsx scripts/createTestToken.ts",
+    "expected-values": "tsx scripts/expectedValues.ts",
+    "verify-claim": "tsx scripts/verifyClaim.ts",
+    "verify-edge-cases": "tsx scripts/verifyEdgeCases.ts"
+  },
   "dependencies": {
     "@metaplex-foundation/genesis": "^0.43.4",
     "@metaplex-foundation/mpl-token-metadata": "^3.4.0",
@@ -20,7 +28,6 @@
     "tsx": "^4.23.15",
     "typescript": "^5.9.3"
   },
-  "type": "module",
   "devDependencies": {
     "@types/node": "^26.6.4"
   }
