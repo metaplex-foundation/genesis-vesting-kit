@@ -147,10 +147,16 @@ Supply
 // [/SETUP]
 
 // [MAIN]
-// Runs when you execute this file (`npx tsx umi.ts`). The kit's test-token scripts
+// Runs when you execute this file: `npx tsx umi.ts`, or `npx tsx umi.ts --json` for JSON
+// (raw base-unit amounts as strings, unix-second times). The kit's test-token scripts
 // import readLock and fetchVestingLocks from here instead, so they test this exact code.
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const umi = createUmi('https://api.mainnet-beta.solana.com').use(genesis())
-  printReport(await fetchVestingLocks(umi, publicKey('YOUR_TOKEN_MINT')))
+  const report = await fetchVestingLocks(umi, publicKey('YOUR_TOKEN_MINT'))
+  if (process.argv.includes('--json')) {
+    const { mint, locks, totalLocked, supply, decimals } = report
+    const json = { mint, decimals, supply, totalLocked, circulating: supply - totalLocked, locks }
+    console.log(JSON.stringify(json, (_, v) => (typeof v === 'bigint' ? v.toString() : v), 2))
+  } else printReport(report)
 }
 // [/MAIN]

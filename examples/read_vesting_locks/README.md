@@ -13,7 +13,7 @@ All three print exactly the same output.
 ## Run it
 
 1. Replace `YOUR_TOKEN_MINT` with the token mint (and the RPC URL if you use devnet or your own node).
-2. Run `npx tsx umi.ts`.
+2. Run `npx tsx umi.ts` for the report, or `npx tsx umi.ts --json` for JSON. In the JSON, amounts are raw base units as strings and times are unix seconds. The fields are the ones in the table below.
 
 ## Output fields
 

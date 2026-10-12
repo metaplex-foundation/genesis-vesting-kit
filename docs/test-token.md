@@ -50,6 +50,33 @@ If we pause or cancel the Advisors lock to demonstrate those states, the values 
 | `ClaimClaimScheduleV2` (Team, cliff + 10 full hours: 141,666,666.666667 claimed, matches the reader) | [`4mcMvPvB…AMZEeS37AMiL1`](https://explorer.solana.com/tx/4mcMvPvBDhZYMRaPo4sVXth6GY381tB6h9BGyQqE1e98W6fdPnBACBCgzcSSQ8T8fz3VzxUnMvG8AZcEZ37AMiL1?cluster=devnet) |
 | `ClaimClaimScheduleV2` (Advisors, 4 full days: 114,285,714.285715 claimed, matches the reader) | [`3vkv4TWs…Pvct9U3`](https://explorer.solana.com/tx/3vkv4TWsxGh5eZ9CLcjxY22ySFn2nyLcR9k8X2vecieUYg9yvdg2pURPsF1RPMrXmNS7BGT8bQn6S7tq5Pvct9U3?cluster=devnet) |
 
+## Devnet: pause and cancel examples
+
+A second, short-lived devnet token shows the pause and cancel states. It has two locks of 600 tokens each (6 decimals). Each lock has no cliff and vests linearly over 10 minutes in 60-second steps. Both are fully settled now, so the token is only useful for its transactions. To repeat the test, run `scripts/verifyEdgeCases.ts` (see [Create your own test token](#create-your-own-test-token)).
+
+| | |
+|---|---|
+| Mint | [`4YqoB2vkm7erEp8hNeb5T8M9yW5thr1Tbq46y3EkbNzi`](https://explorer.solana.com/address/4YqoB2vkm7erEp8hNeb5T8M9yW5thr1Tbq46y3EkbNzi?cluster=devnet) |
+| Genesis account | [`BdbUXvZayCfT8doKMLcY9wSNTQu17PLBC2QdCpuHfbUi`](https://explorer.solana.com/address/BdbUXvZayCfT8doKMLcY9wSNTQu17PLBC2QdCpuHfbUi?cluster=devnet) |
+| Lock A (pausable) | [`A61f8rF6BsezqxbLDzZsVDktkv3iZKmZgH85TsGrk2GS`](https://explorer.solana.com/address/A61f8rF6BsezqxbLDzZsVDktkv3iZKmZgH85TsGrk2GS?cluster=devnet) |
+| Lock B (cancelable) | [`4biY88DP8yjdRr2CwyjmjTk8VL3qr9rXAMZEeSxiP79r`](https://explorer.solana.com/address/4biY88DP8yjdRr2CwyjmjTk8VL3qr9rXAMZEeSxiP79r?cluster=devnet) |
+
+| Time | Action | Signature |
+|---|---|---|
+| 1791401810 | `AddClaimScheduleBucketV2` (A) | [`5KERgqB7…HPNTGB`](https://explorer.solana.com/tx/5KERgqB7v6xMocsSdhpdt1JtEQ2uMuSfn2qQjhow5WJA5b1hpyqv5fTNYBvgVx1tRgC27k4eBwkrQ55FcLHPNTGB?cluster=devnet) |
+| 1791401811 | `AddClaimScheduleBucketV2` (B) | [`2ZN2iRpx…ejUdvz`](https://explorer.solana.com/tx/2ZN2iRpxnDTuy4n2iU2bpYjcA84EpsbriT1uesBHWT2PskAEv13TifFas2rB7bsWrqaF9yMDpDcNc26SRcejUdvz?cluster=devnet) |
+| 1791401812 | `FinalizeV2` | [`2tdmPB6L…axGam8`](https://explorer.solana.com/tx/2tdmPB6Lgsuv5PfCSBBk74AVA9dFruB42DB7qBnJsASieSByFc1w4bocVSs2fMXbYF7YwL4iSArkoHpPCTaxGam8?cluster=devnet) |
+| 1791401943 | `SetClaimSchedulePausedStateV2` (A, pause) | [`ko5oAXrf…kEpGAP`](https://explorer.solana.com/tx/ko5oAXrfKSECkwZ7SSvADWsDhzeL4gi8AQqCqQFGnKK5jmaZxorHWYuHeK2qrpKPpQ2ToZ3eX2oNYoLiEkEpGAP?cluster=devnet) |
+| 1791402067 | `CancelClaimScheduleBucketV2` (B) | [`4CRjrWtx…8n6QGt`](https://explorer.solana.com/tx/4CRjrWtxYozsd75yoZLUo89noefRLm2EWivCg8hN9JwMS4XiU6HNstRz68ybRtWHud9y2gX1CSWRsvpqY88n6QGt?cluster=devnet) |
+| 1791402068 | `SetClaimSchedulePausedStateV2` (A, resume) | [`2jB2XgJQ…dCyBHH`](https://explorer.solana.com/tx/2jB2XgJQpDUCcF7dJe2gwUHorrxVHfe97pTUJypb2WZsGbogpYTFhBLiaCDC3RTrf2xSrazbJWKopmPdvPdCyBHH?cluster=devnet) |
+| 1791402069 | `ClaimClaimScheduleV2` (B, after cancel: 240 claimed, matches the reader. The unvested 360 can never be claimed) | [`7qtT6gEL…vqSFcY`](https://explorer.solana.com/tx/7qtT6gELnUKR75NPAsSMzMTv9gKRDTj1DNQu3L7zUXnHPmv2sNHtATTRVXBYcGMXKkZEkvds5YrutBz1yvqSFcY?cluster=devnet) |
+| 1791402130 | `ClaimClaimScheduleV2` (A, after a 124-second pause: 180 claimed, matches the reader) | [`3JYY3c7H…p1hCZc`](https://explorer.solana.com/tx/3JYY3c7HCxBfYMfaVir8ah2RYxEkvACcFciTEQ9FgajPaQZ7PQ3BiL2pUJD7pugYCfoAwH2cB3CrKfUwp5p1hCZc?cluster=devnet) |
+
+What to check:
+
+- **While paused**, lock A's vested amount stops growing. After the resume, the schedule continues shifted by the paused time (`total_seconds_paused`). So at the claim, A had vested 3 steps (180), not the 5 steps (300) it would have without the pause.
+- **After cancel**, lock B's vested amount is frozen at the cancel time (4 steps, 240) and its locked amount is 0. The unvested tokens are no longer locked for this recipient, so don't count them as locked.
+
 ## Create your own test token
 
 To test against a token you control, for example to try pause and cancel or to test your indexer from creation onward, create your own with the same layout. The scripts are in [`scripts/`](../scripts/) and use the Umi example's reader, so the numbers they check are the ones your integration should produce.

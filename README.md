@@ -61,6 +61,8 @@ Relevant entries:
 
 The byte offsets of every field you need are in the [integration guide, §2](docs/integration-guide.md#2-claimschedulebucketv2-layout). With those you can decode the account without any SDK.
 
+Rust: there is no published crate. Generate a client from the IDL or decode with the byte offsets.
+
 ### TypeScript quick reference
 
 ```ts
