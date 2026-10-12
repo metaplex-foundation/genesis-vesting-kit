@@ -1,0 +1,42 @@
+{
+  "cluster": "devnet",
+  "createdAt": 1791401512,
+  "mint": "6LNGVeWcQVKDPNktwSJNFXe3Y5HYWVPWJFnggjSbTFYu",
+  "decimals": 6,
+  "totalSupply": "1000000000000000",
+  "genesisAccount": "9BMM3hSm7s2v79qsPYAi7z8rVdDkddSRqC8tBY6TF59d",
+  "recipient": "Tes1zkZkXhgTaMFqVgbgvMsVkRJpq4Y6g54SbDBeKVV",
+  "buckets": {
+    "unlocked": {
+      "address": "8tAxTyFHaic8yiAQu5XBU6CtSezcweadjs8BYVzZASPS",
+      "allocation": "400000000000000"
+    },
+    "team": {
+      "address": "3stYhdiNaWx488MPzJEX5wMoSrBSyA1nfPxnrAhRHkuN",
+      "allocation": "400000000000000",
+      "cliffTime": 1791405112,
+      "cliffBps": 2500,
+      "linearStart": 1791405112,
+      "durationSeconds": 259200,
+      "periodSeconds": 3600
+    },
+    "advisors": {
+      "address": "6TBFGPeXKrPPKRSG7TXZgZQsYG22BjZkAEtGuSvUyR5b",
+      "allocation": "200000000000000",
+      "cliffTime": null,
+      "linearStart": 1791401512,
+      "durationSeconds": 604800,
+      "periodSeconds": 86400,
+      "pausable": true,
+      "cancelable": true
+    }
+  },
+  "signatures": {
+    "initializeV2": "2E4CNRdHY6BZrDDz5XVanBrXBTceYUxV1zRkphmu12oCARMy8aJ1cb4ykHMX87xJTZDJo3dh8vQSvQfiBSdKkX21",
+    "addUnlockedBucketV2": "5Nunkpn6tAGzMRqTc6d2fmS4mHjJQgCFH86QjtqFnsRGGp17NdLMUHDCXuyHJaWtTsRHcxGxDAEddVXGb5BvTVR7",
+    "addClaimScheduleBucketV2:team": "2J4EL9b66J5ceZH51tZjnFcqLsPi8yLUqsKLiaNSzcaMfPaaM6u8VqCF8LVhhXT8Y3EiJvVpyHX6XMM9rc8L3f3X",
+    "addClaimScheduleBucketV2:advisors": "5MxVUoZg6H8AE1jA7xm2JQ7MurdRtHRo7CbnBpokDStsM7bVYaEXBJhD6zYAGXFvyL23MTphCCnJyEnK4iEbHJKQ",
+    "finalizeV2": "5NV35Yk2qbPm3bAAWHe1RH6zfUMWiEntq9h3hoxGov2VtCXB1eNBQHptz5LFYYY1TaZJu3bLa3VC6whQW7bESoCN",
+    "claimUnlockedV2": "3X9D42S8qF9Gm6fqGEUZ9rMniEH8tN8SWH7xGq2JXLRzseprxFEr3W98jobzGd3CvqDW9WnkReTohRFSLBpnAgTL"
+  }
+}
