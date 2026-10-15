@@ -10,11 +10,19 @@ Tokens launched with **Metaplex Genesis** lock team, advisor and treasury alloca
 
 Locked tokens sit in a single Genesis-owned token account, not in recipient wallets. Balance-based heuristics therefore get this wrong. You have to read the lock accounts.
 
+## Start here
+
+1. **Read the [integration guide](docs/integration-guide.md).** It explains where vesting lives on chain, how to find every lock for a token, and how to compute locked and circulating supply. Allow about 10 minutes.
+2. **Run the [Umi example](examples/read_vesting_locks/umi.ts) on a real token.** Replace `YOUR_TOKEN_MINT` with a Genesis token, for example `VK2NancNtR9D7CsWoXze7r7pEbqfLXDr9AYjTJRPLEX`, then run `npm install` and `npx tsx examples/read_vesting_locks/umi.ts` from the kit root. The [field guide](examples/read_vesting_locks/README.md) explains each value in the output and shows the sample output for that token.
+3. **Build it into your product.** Copy `readLock` and `fetchVestingLocks`, or use the Kit or web3.js version if you can't add the Genesis SDK. The [Program and IDL](#program-and-idl) section has everything for decoding in other languages.
+4. **Check your numbers against the [test token](docs/test-token.md).** Compare what your UI shows with its expected values at fixed timestamps.
+5. **Questions?** [Contact us](#contact).
+
 ## Kit contents
 
 | | |
 |---|---|
-| 📘 [Integration guide](docs/integration-guide.md) | Account model, byte layout, vesting formula, edge cases (pause / cancel / failed sale), what to index |
+| 📘 [Integration guide](docs/integration-guide.md) | **Start here.** Account model, byte layout, vesting formula, edge cases (pause / cancel / failed sale), what to index |
 | 🧩 [Program and IDL](#program-and-idl) | Program ID, pinned IDL ([`idl/`](idl/)), discriminators, TypeScript quick reference |
 | 🧪 [Test token + example transactions](docs/test-token.md) | Live token with a cliff lock and a linear lock, plus expected values at fixed timestamps |
 | 💻 [Code examples](examples/read_vesting_locks/) | Copy-paste readers for **Umi** (recommended), **@solana/kit** and **web3.js**: find every lock for a mint, then print status, locked / vested / claimed / claimable, the schedule, the next unlock and circulating supply. [Sample output and field guide](examples/read_vesting_locks/README.md) |
