@@ -2,6 +2,8 @@
 
 For wallets, explorers, aggregators, data APIs, trading terminals and risk scanners that need to show **locked supply, unlock schedules and circulating supply** for tokens launched with Metaplex Genesis.
 
+> **Start here.** Read this guide first, then run the [Umi example](../examples/read_vesting_locks/umi.ts) on a real token and compare your results with the [test token values](./test-token.md). The [kit README](../README.md#start-here) lists every step.
+
 ## TL;DR
 
 - Genesis vesting locks are on-chain accounts of type **`ClaimScheduleBucketV2`** owned by the Genesis program `GNS1S5J5AspKXgpjz6SvKL66kPaKWAhaGRhCqPRxii2B`.
